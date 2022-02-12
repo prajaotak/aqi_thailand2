@@ -21,3 +21,5 @@ joblib==0.14.1
 Keras==2.3.1
 beautifulsoup4==4.9.3
 scikit_learn==0.23.2
+lxml==4.7.1
+torch==1.10.2
