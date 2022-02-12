@@ -105,7 +105,7 @@ def update_last_air4Thai(
     print('download more pollution data from Thailand PCD')
     # use Firefox to open the website
     dir_name = os.path.dirname(os.path.abspath(__file__)).replace('\\', '/')
-    executable_path = f'{dir_name}/geckodriver.exe'
+    executable_path = f'/usr/local/bin/geckodriver'
     browser = webdriver.Firefox(executable_path=executable_path)
 
     browser.get(url)
