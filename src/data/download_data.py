@@ -461,33 +461,33 @@ def main(
     #         end_date=end_date)
 
     
-   #  update_last_air4Thai(
-   #      url='http://air4thai.pcd.go.th/webV2/history/',
-   #      data_folder=f'{main_folder}air4thai_hourly/')
-   #
-   # # print('update BKP data')
-   # # update_bkp(data_folder=f'{main_folder}bkp_hourly/')
-   #
-   #  b_data_list = ['http://berkeleyearth.lbl.gov/air-quality/maps/cities/Thailand/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Viet_Nam/',
-   #                  'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Indonesia/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Myanmar/',
-   #                  'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Singapore/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Laos/',
-   #                  'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Cambodia/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Malaysia/',
-   #                  'http://berkeleyearth.lbl.gov/air-quality/maps/cities/China/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Bhutan/',
-   #                  'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Bangladesh/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/India/',
-   #                  'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Brunei_Darussalam/',
-   #                  ]
-   #
-   #  for url in b_data_list:
-   #      # gather all data
-   #      try:
-   #          download_b_data(
-   #              data_folder=f'{main_folder}pm25/',
-   #              url=url)
-   #      except:
-   #          print(f'fail to download file for {url}')
-   #
-   #  #Parallel(n_jobs=-2)(delayed(download_b_data)(data_folder=f'{main_folder}pm25/', url=url) for url in tqdm(b_data_list))
-   #
+    update_last_air4Thai(
+        url='http://air4thai.pcd.go.th/webV2/history/',
+        data_folder=f'{main_folder}air4thai_hourly/')
+
+   # print('update BKP data')
+   # update_bkp(data_folder=f'{main_folder}bkp_hourly/')
+
+    b_data_list = ['http://berkeleyearth.lbl.gov/air-quality/maps/cities/Thailand/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Viet_Nam/',
+                    'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Indonesia/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Myanmar/',
+                    'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Singapore/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Laos/',
+                    'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Cambodia/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Malaysia/',
+                    'http://berkeleyearth.lbl.gov/air-quality/maps/cities/China/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Bhutan/',
+                    'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Bangladesh/', 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/India/',
+                    'http://berkeleyearth.lbl.gov/air-quality/maps/cities/Brunei_Darussalam/',
+                    ]
+
+    for url in b_data_list:
+        # gather all data
+        try:
+            download_b_data(
+                data_folder=f'{main_folder}pm25/',
+                url=url)
+        except:
+            print(f'fail to download file for {url}')
+
+    #Parallel(n_jobs=-2)(delayed(download_b_data)(data_folder=f'{main_folder}pm25/', url=url) for url in tqdm(b_data_list))
+
     if build_json:
         # Build City info json for Berkeley Data
         get_city_info(data_folder=f'{main_folder}pm25/')
@@ -497,8 +497,8 @@ def main(
         station_info = json.loads(station_info)
         with open(f'{main_folder}/aqm_hourly2/stations_locations.json', 'w') as f:
             json.dump(station_info, f)
-    #
-    # download_us_emb_data(data_folder=f'{main_folder}us_emb/')
+
+    download_us_emb_data(data_folder=f'{main_folder}us_emb/')
 
 
     if cdc_data:
